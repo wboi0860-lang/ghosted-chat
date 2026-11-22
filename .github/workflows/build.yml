@@ -25,7 +25,6 @@ jobs:
           npx cap init "Ghosted Chat" com.ghosted.chat --web-dir=www
           npx cap add android
           npx cap sync android
-        python3 -c "import pathlib; [ (lambda p: p.write_text(p.read_text().replace('android {', 'android {\n    configurations.all { resolutionStrategy { eachDependency { if (requested.group == \"org.jetbrains.kotlin\") { useVersion \"1.8.22\" } } } }'))) (pathlib.Path(f)) for f in ['android/app/build.gradle','android/build.gradle'] ]"
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
