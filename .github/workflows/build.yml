@@ -18,9 +18,11 @@ jobs:
           java-version: '17'
       - name: Build APK
         run: |
+         mkdir -p www
+         cp index.html www/index.html
           npm init -y
           npm install @capacitor/core @capacitor/cli @capacitor/android
-          npx cap init "Ghosted Chat" com.ghosted.chat --web-dir=.
+          npx cap init "Ghosted Chat" com.ghosted.chat --web-dir=www
           npx cap add android
           npx cap sync android
           cd android
